@@ -1,0 +1,6 @@
+# Google Analytics Tracking ID
+google_analytics:
+
+# Default portfolio post
+default_cover_image: /photo/images/default.jpeg
+default_post_title: 摄影集
