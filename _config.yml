@@ -108,7 +108,45 @@ neat_css:
   enable: true
   exclude:
     - '*.min.css'
+# hexo-lazyload-image
+lazyload:
+  enable: true
+  onlypost: false # optional
+  loadingImg: https://cdn.jsdelivr.net/gh/lusuzi/CDN/loading.gif # optional eg ./images/loading.gif
+  isSPA: false # optional
 
+# offline config passed to sw-precache.
+offline:
+  maximumFileSizeToCacheInBytes: 5242880
+  staticFileGlobs:
+    - public/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff,woff2}
+  stripPrefix: public
+  verbose: true
+  runtimeCaching:
+    - urlPattern: /*  # 子路径（接受通配符）
+      handler: cacheFirst
+      options:
+        origin: cdn.jsdelivr.net  # 域名
+    - urlPattern: /*  # 子路径（接受通配符）
+      handler: cacheFirst
+      options:
+        origin: cdnjs.cloudflare.com  # 域名
+    - urlPattern: /*  # 子路径（接受通配符）
+      handler: cacheFirst
+      options:
+        origin: code.jquery.com  # 域名
+    - urlPattern: /*  # 子路径（接受通配符）
+      handler: cacheFirst
+      options:
+        origin: maxcdn.bootstrapcdn.com  # 域名
+    - urlPattern: /*  # 子路径（接受通配符）
+      handler: cacheFirst
+      options:
+        origin: fonts.googleapis.com  # 域名
+    - urlPattern: /*  # 子路径（接受通配符）
+      handler: cacheFirst
+      options:
+        origin: fonts.gstatic.com  # 域名
 
 ## Themes: https://hexo.io/themes/
 theme: edinburgh
