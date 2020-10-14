@@ -138,10 +138,6 @@ offline:
     - urlPattern: /*  # 子路径（接受通配符）
       handler: cacheFirst
       options:
-        origin: maxcdn.bootstrapcdn.com  # 域名
-    - urlPattern: /*  # 子路径（接受通配符）
-      handler: cacheFirst
-      options:
         origin: fonts.googleapis.com  # 域名
     - urlPattern: /*  # 子路径（接受通配符）
       handler: cacheFirst
