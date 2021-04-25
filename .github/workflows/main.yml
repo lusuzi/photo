@@ -1,0 +1,34 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v1
+        with:
+          ref: master
+      - name: Setup Node # 安装 Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - name: Setup hexo
+        env:
+          ACTION_DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$ACTION_DEPLOY_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git config --global user.email "letter_chat@outlook.com"
+          git config --global user.name "lusuzi"
+          npm install hexo-cli@3.1.0 -g
+          npm install
+      - name: Hexo deploy
+        run: |
+          hexo clean
+          hexo d
